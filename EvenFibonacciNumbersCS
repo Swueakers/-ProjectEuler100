@@ -1,0 +1,44 @@
+using System;
+using System.Linq;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int gate = 0;
+    int num1 = 0;
+    int num2 = 1;
+    int sum = 0;
+    int[] fib = new int[32];
+    int[] fibEven = new int[32];
+
+    //calculates the first 32 numbers in the fibonacci Sequence
+    while (gate != 32) {
+      sum = num1 + num2;
+      fib[gate] = sum;
+      num1 = num2;
+      num2 = sum;
+      gate++;
+    }
+
+    //checks if each number in the Sequence is even then adds to a new array
+    for (int i = 0; i != fib.Length; i++) {
+      int num = fib[i]/2;
+      int fibSum = num + num;
+      bool check = fib[i] == fibSum;
+      if (check == true) {
+        fibEven[i] = fibSum;
+      }
+      else {
+        continue;
+      }
+    }
+
+    //adds the numbers in the array up
+    int fibbSum = 0;
+    int l = 0;
+    while (l != fibEven.Length) {
+      fibbSum += fibEven[l];
+      l++;
+    }
+    Console.WriteLine(fibbSum);
+  }
+}
